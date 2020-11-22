@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1063992725963",
+    "firebase_url": "https://logisticdriver-63a33.firebaseio.com",
+    "project_id": "logisticdriver-63a33",
+    "storage_bucket": "logisticdriver-63a33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063992725963:android:65f9ef074592661bba264e",
+        "android_client_info": {
+          "package_name": "com.example.logisticsDriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063992725963-6o1ddt8phr4hc3vinn5l85qvdorqp5s4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALtxKKlm4wgeQqWhjRMhpFDhhmcsUGVH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1063992725963-6o1ddt8phr4hc3vinn5l85qvdorqp5s4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
