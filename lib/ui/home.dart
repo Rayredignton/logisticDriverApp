@@ -261,43 +261,41 @@ class _HomeState extends State<Home> {
                       SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
-              Row(children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:28.0),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.035,
-                  width: MediaQuery.of(context).size.width*0.075,
-                    decoration: BoxDecoration(
-                       color: HexColor("#D5EBFB"),
-                      borderRadius: BorderRadius.circular(10),
-                      
-                    ),
-                    child: Center(child: Image.asset(Assets.belll)),
-                  ),
-                ),
-                Column(
-                  children: [
-                    GestureDetector(
-                       onTap: () => Navigator.push(
+              GestureDetector(
+                 onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => TripPreview(),
                         )),
-                                          child: Container(
-                          width: MediaQuery.of(context).size.width*0.8,
-                        child: Text("You Accepted a Delivery request",style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500,fontSize: 20),)),
+                              child: Row(children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal:28.0),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.035,
+                    width: MediaQuery.of(context).size.width*0.075,
+                      decoration: BoxDecoration(
+                         color: HexColor("#D5EBFB"),
+                        borderRadius: BorderRadius.circular(10),
+                        
+                      ),
+                      child: Center(child: Image.asset(Assets.belll)),
                     ),
-                     SizedBox(
-                height: MediaQuery.of(context).size.height * 0.09,
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                            width: MediaQuery.of(context).size.width*0.8,
+                          child: Text("You Accepted a Delivery request",style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500,fontSize: 20),)),
+                      
+                      Container(
+                        width: MediaQuery.of(context).size.width*0.8,
+                        child: Text("1h ago"))
+                    ],
+                  )
+                ],),
               ),
-                    Container(
-                      width: MediaQuery.of(context).size.width*0.8,
-                      child: Text("1h ago"))
-                  ],
-                )
-              ],),
              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.03,
+                height: MediaQuery.of(context).size.height * 0.05,
               ),
                Row(children: [
                 Padding(

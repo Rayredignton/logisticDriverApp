@@ -37,8 +37,12 @@ class Assets {
   static const circle = "assets/images/circle.png";
   static const rider = "assets/images/rider.png";
   static const circleAvatar = "assets/images/circleAvatar.png";
-     static const arrow = "assets/images/arrow.png";
-   static const circleAvatarS = "assets/images/circleAvatarS.png";
+  static const arrow = "assets/images/arrow.png";
+  static const circleAvatarS = "assets/images/circleAvatarS.png";
+  static const accept = "assets/images/accept.png";
+  static const decline = "assets/images/decline.png";
+  static const start = "assets/images/Start.png";
+  
   //SVG
   static const photoSvg = "assets/svg/photo.svg";
   static const card2Svg = "assets/svg/Card22.svg";

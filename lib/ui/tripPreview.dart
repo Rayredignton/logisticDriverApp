@@ -3,7 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:logisticsDriver/core/services/methods.dart';
+import 'package:logisticsDriver/ui/tripPreview2.dart';
+import 'package:logisticsDriver/utilities/assets.dart';
 
 class TripPreview extends StatefulWidget {
   @override
@@ -11,7 +14,7 @@ class TripPreview extends StatefulWidget {
 }
 
 class _TripPreviewState extends State<TripPreview> {
-   Completer<GoogleMapController> _controllerGoogleMap = Completer();
+  Completer<GoogleMapController> _controllerGoogleMap = Completer();
   double bottomPaddingOfMap = 0;
 
   GoogleMapController newGoogleMapController;
@@ -40,27 +43,177 @@ class _TripPreviewState extends State<TripPreview> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(children: [
-        GoogleMap(
-                myLocationEnabled: true,
-                myLocationButtonEnabled: false,
-                zoomControlsEnabled: true,
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: GoogleMap(
+                  myLocationEnabled: true,
+                  myLocationButtonEnabled: false,
+                  zoomControlsEnabled: true,
 
-                initialCameraPosition: _kGooglePlex,
-                zoomGesturesEnabled: true,
-                onMapCreated: (GoogleMapController controller) {
-                  _controllerGoogleMap.complete(controller);
-                  newGoogleMapController = controller;
-                  setState(() {
-                    bottomPaddingOfMap = 300.0;
-                  });
-                  locatePosition();
-                },
-                //  markers: Set<Marker>.of(markers),
+                  initialCameraPosition: _kGooglePlex,
+                  zoomGesturesEnabled: true,
+                  onMapCreated: (GoogleMapController controller) {
+                    _controllerGoogleMap.complete(controller);
+                    newGoogleMapController = controller;
+                    setState(() {
+                      bottomPaddingOfMap = 300.0;
+                    });
+                    locatePosition();
+                  },
+                  //  markers: Set<Marker>.of(markers),
+                ),
               ),
-      ],),
-      
+              Padding(
+                padding: const EdgeInsets.only(top: 408.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0),
+                          topRight: Radius.circular(30.0))),
+                  height: MediaQuery.of(context).size.height * 0.6,
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 38.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(Assets.clock),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.02,
+                            ),
+                            Text(
+                              "2 mins away",
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.05,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.3,
+                        height: 100,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.grey[700],
+                          child: Icon(
+                            Icons.person,
+                            color: Colors.white,
+                            size: 60,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
+                      Container(
+                        child: Text('Stephanie Yeboha',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 22,
+                                color: Colors.black)),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.05,
+                      ),
+                      Container(
+                          height: MediaQuery.of(context).size.height * 0.08,
+                          width: MediaQuery.of(context).size.width * 0.85,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: HexColor("#E0E3FB")),
+                              boxShadow: [
+                                BoxShadow(
+                                    spreadRadius: 0,
+                                    blurRadius: 4,
+                                    offset: Offset(0, 4),
+                                    color: Colors.black.withOpacity(0.25)),
+                              ],
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8))),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.02,
+                              ),
+                              Center(
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.04,
+                                    ),
+                                    Text(
+                                      "Delivery type:",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          color: HexColor("#959595")),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.02,
+                                    ),
+                                    Text(
+                                      "Bulk delivery",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          color: HexColor("#2094E9")),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.05,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Image.asset(
+                                  Assets.decline,
+                                  scale: 0.8,
+                                )),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.04,
+                            ),
+                            GestureDetector(
+                                onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => TripPreview2(),
+                                    )),
+                                child: Image.asset(
+                                  Assets.accept,
+                                  scale: 0.8,
+                                ))
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
